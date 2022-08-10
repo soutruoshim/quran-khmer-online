@@ -85,7 +85,10 @@ class _SignInPageState extends State<SignInPage> {
           decoration: new BoxDecoration(
               image: new DecorationImage(
                   fit: BoxFit.cover,
-                  image: new NetworkImage('https://i.pinimg.com/originals/ee/6f/a9/ee6fa90da8af4affa10737d312591035.jpg'))),
+                  image: AssetImage("images/background.png"),
+                  //image: new NetworkImage('https://i.pinimg.com/originals/ee/6f/a9/ee6fa90da8af4affa10737d312591035.jpg')
+           )
+          ),
 
         ),
 
@@ -156,7 +159,7 @@ class _SignInPageState extends State<SignInPage> {
                   Text(
                     "Copyright © 2021-2022",
                     textAlign: TextAlign.center,
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(color: Colors.tealAccent),
                   ),
                 ],
               ),

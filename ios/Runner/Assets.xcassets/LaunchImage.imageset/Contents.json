@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Icon-App-60x60@2x.png",
+      "filename" : "logo_lunch.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Icon-App-60x60@2x-1.png",
+      "filename" : "logo_lunch copy.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Icon-App-60x60@3x.png",
+      "filename" : "logo_lunch copy-1.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

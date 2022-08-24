@@ -222,7 +222,7 @@ class _StreamsPageState extends State<StreamsPage> {
   Widget actionStream(){
     final auth = Provider.of<AuthBase>(context, listen: false);
     final database = Provider.of<Database>(context, listen: false);
-    print('current_user: '+ auth.currentUser.uid);
+
     if(auth.currentUser == null){
       return Text('');
     }

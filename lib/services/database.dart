@@ -52,26 +52,26 @@ class FirestoreDatabase implements Database {
 
   @override
   Stream<Account> accountStream({@required String accountId}) => _service.documentStream(
-    path: APIPath.account(uid),
+    path: APIPath.account(accountId),
     builder: (data, documentId) => Account.fromMap(data, documentId),
   );
 
   @override
   Stream<List<Account>> accountsStream() => _service.collectionStream(
-    path: APIPath.accounts(uid),
+    path: APIPath.accounts(),
     builder: (data, documentId) => Account.fromMap(data, documentId),
   );
 
   @override
   Stream<List<Account>> searchAllAccountsStream(String searchKeyWord) => _service.searchAllCollectionStream(
-    path: APIPath.accounts(uid),
+    path: APIPath.accounts(),
     searchKeyWord: searchKeyWord,
     builder: (data, documentId) => Account.fromMap(data, documentId),
   );
 
   @override
   Stream<List<Account>> searchAccountsStream(String searchKeyWord) => _service.searchCollectionStream(
-    path: APIPath.accounts(uid),
+    path: APIPath.accounts(),
     searchKeyWord: searchKeyWord,
     builder: (data, documentId) => Account.fromMap(data, documentId),
   );

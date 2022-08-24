@@ -5,8 +5,10 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
+import 'package:quran_khmer_online/app/landing_page.dart';
 import 'package:quran_khmer_online/app/lecture_page/lectures_page.dart';
 import 'package:quran_khmer_online/app/schedule_set_page/sechedule_set_page.dart';
+import 'package:quran_khmer_online/app/sign_in/sign_in_page.dart';
 import 'package:quran_khmer_online/common_widget/avatar.dart';
 import 'package:quran_khmer_online/common_widget/show_alert_dialog.dart';
 import 'package:quran_khmer_online/common_widget/show_exception_alert_dialog.dart';
@@ -39,6 +41,7 @@ class _AccountPageState extends State<AccountPage> with SingleTickerProviderStat
   void initState() {
     // TODO: implement initState
     super.initState();
+    print("init homepage");
 
   }
 
@@ -159,11 +162,16 @@ class _AccountPageState extends State<AccountPage> with SingleTickerProviderStat
   @override
   Widget build(BuildContext context) {
     final auth = Provider.of<AuthBase>(context, listen: false);
+    if(auth.currentUser == null){
+      //return SignInPage();
+      return SignInPage();
+    }
     final email = auth.currentUser.email;
     var menu ={'Logout'};
     if(email == 'admin_qurankhmer_online@gmail.com'){
       menu = {'Lectures', 'Schedule', 'Logout'};
     }
+
     return Scaffold(
         appBar: AppBar(
           title: Text("Account"),

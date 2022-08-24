@@ -1,6 +1,6 @@
 class APIPath{
   static String account(String uid) => '/users/$uid';
-  static String accounts(String uid) => '/users';
+  static String accounts() => '/users';
   static String schedules(String day) => '/schedules/$day/schedule';
   static String schedule(String day, String id) => '/schedules/$day/schedule/$id';
 

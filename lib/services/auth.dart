@@ -30,6 +30,7 @@ class Auth extends AuthBase{
     final userCrendential = await _firebaseAuth.signInWithCredential(
       EmailAuthProvider.credential(email: email, password: password),
     );
+    //authStateChanges();
     return userCrendential.user;
   }
 

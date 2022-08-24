@@ -46,6 +46,7 @@ class _EmailSignUpFormState extends State<EmailSignUpForm> {
         await auth.signInWithEmailAndPassword(_email, _password);
       } else {
         await auth.createUserWithEmailAndPassword(_email, _password);
+
       }
       Navigator.of(context).pop();
     } on FirebaseAuthException catch (e) {
@@ -58,6 +59,7 @@ class _EmailSignUpFormState extends State<EmailSignUpForm> {
     } finally {
       setState(() {
         _isLoading = false;
+
       });
     }
   }

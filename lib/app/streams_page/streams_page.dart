@@ -111,6 +111,9 @@ class _StreamsPageState extends State<StreamsPage> {
   Widget _getCurrentUserInfo(){
     final auth = Provider.of<AuthBase>(context, listen: false);
     final database = Provider.of<Database>(context, listen: false);
+    if(auth.currentUser == null){
+      return Text("");
+    }
     return  StreamBuilder<Account>(
         stream: database.accountStream(accountId: auth.currentUser.uid),
         builder: (context, snapshot) {
@@ -219,12 +222,18 @@ class _StreamsPageState extends State<StreamsPage> {
   Widget actionStream(){
     final auth = Provider.of<AuthBase>(context, listen: false);
     final database = Provider.of<Database>(context, listen: false);
+    print('current_user: '+ auth.currentUser.uid);
+    if(auth.currentUser == null){
+      return Text('');
+    }
     return  StreamBuilder<Account>(
         stream: database.accountStream(accountId: auth.currentUser.uid),
         builder: (context, snapshot) {
+          //print(snapshot.data.name);
           if (snapshot.hasError) {
             return Text('');
           } else {
+            //print(snapshot.data);
             final userDocument = snapshot.data;
             if (userDocument != null) {
               subjectString = userDocument.name;

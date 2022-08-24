@@ -1,9 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:quran_khmer_online/app/landing_page.dart';
 import 'package:quran_khmer_online/app/sign_in/validators.dart';
 import 'package:quran_khmer_online/common_widget/form_submit_button.dart';
 import 'package:quran_khmer_online/common_widget/show_exception_alert_dialog.dart';
+import 'package:quran_khmer_online/main.dart';
 import 'package:quran_khmer_online/services/auth.dart';
 enum EmailSignInFormType { signIn, register }
 
@@ -46,6 +48,11 @@ class _EmailSignInFormState extends State<EmailSignInForm> {
         await auth.createUserWithEmailAndPassword(_email, _password);
       }
       Navigator.of(context).pop();
+      // Navigator.pushReplacement(
+      //     context,
+      //     new MaterialPageRoute(
+      //         builder: (BuildContext context) => MyApp()));
+
     } on FirebaseAuthException catch (e) {
       showExceptionAlertDialog(
         context,

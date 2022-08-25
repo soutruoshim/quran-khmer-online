@@ -62,6 +62,7 @@ class _SchedulePageState extends State<SchedulePage> {
       ),
     );
   }
+
   _buildContents(BuildContext context){
     final database = FirestoreDatabase(uid: '1234');
     return StreamBuilder<List<Schedule>>(

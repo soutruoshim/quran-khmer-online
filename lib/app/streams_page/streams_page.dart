@@ -10,7 +10,7 @@ import 'package:quran_khmer_online/services/auth.dart';
 import 'package:quran_khmer_online/services/database.dart';
 import 'package:jitsi_meet/jitsi_meet.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
-
+import 'dart:math';
 
 class StreamsPage extends StatefulWidget {
   //TextEditingController controller;
@@ -127,11 +127,21 @@ class _StreamsPageState extends State<StreamsPage> {
               emailString = userDocument.email;
               return Text('');
             }else{
+              String guest = generateRandomString(6);
+              subjectString = guest;
+              nameString = guest;
+              emailString = guest+"@gmail.com";
               return Text('');
             }
           }
         }
     );
+  }
+
+  String generateRandomString(int len) {
+    var r = Random();
+    const _chars = 'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890';
+    return List.generate(len, (index) => _chars[r.nextInt(_chars.length)]).join();
   }
   Future<void> setOnline(String status) async{
     try {

@@ -39,8 +39,8 @@ class _CustomDialogBoxState extends State<CustomDialogBox> {
             color: Colors.white,
             borderRadius: BorderRadius.circular(Constants.padding),
             boxShadow: [
-              BoxShadow(color: Colors.black,offset: Offset(0,10),
-              blurRadius: 4
+              BoxShadow(color: Colors.black,offset: Offset(0,1),
+              blurRadius: 10
               ),
             ]
           ),

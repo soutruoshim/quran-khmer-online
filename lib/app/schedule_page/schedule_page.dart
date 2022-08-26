@@ -81,7 +81,7 @@ class _SchedulePageState extends State<SchedulePage> {
                       return CustomDialogBox(
                         title: schedule.lecture,
                         descriptions: "He will online stream on "+_day_full[day_num - 1] +" at time: "+schedule.start_time + " to "+schedule.end_time,
-                        text: "Yes",
+                        text: "Ok",
                         img: schedule.img,
                       );
                     }

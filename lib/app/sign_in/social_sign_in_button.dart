@@ -15,7 +15,7 @@ class SocialSignInButton extends CustomRaisedButton {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
                 //Image.asset(assetName),
-                Icon(Icons.email_outlined),
+                Icon(Icons.email_outlined, color: textColor,),
                 Text(
                  text,
                   style: TextStyle(fontSize: 15.0, color: textColor),

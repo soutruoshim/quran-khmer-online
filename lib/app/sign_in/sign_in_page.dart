@@ -72,6 +72,10 @@ class _SignInPageState extends State<SignInPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Account"),
+        elevation: 0.5,
+      ),
       body: _buildContent(context),
       backgroundColor: Colors.white70,
     );
@@ -81,16 +85,16 @@ class _SignInPageState extends State<SignInPage> {
     return Stack(
       alignment: Alignment.bottomCenter,
       children: [
-        Container(
-          decoration: new BoxDecoration(
-              image: new DecorationImage(
-                  fit: BoxFit.cover,
-                  image: AssetImage("images/background.png"),
-                  //image: new NetworkImage('https://i.pinimg.com/originals/ee/6f/a9/ee6fa90da8af4affa10737d312591035.jpg')
-           )
-          ),
-
-        ),
+        // Container(
+        //   decoration: new BoxDecoration(
+        //       image: new DecorationImage(
+        //           fit: BoxFit.cover,
+        //           image: AssetImage("images/background.png"),
+        //           //image: new NetworkImage('https://i.pinimg.com/originals/ee/6f/a9/ee6fa90da8af4affa10737d312591035.jpg')
+        //    )
+        //   ),
+        //
+        // ),
 
         Positioned(
           bottom: 48.0,
@@ -150,17 +154,17 @@ class _SignInPageState extends State<SignInPage> {
                     assetName: 'images/email.png',
                     text: "Sign Up with Email",
                     color: Colors.teal,
-                    textColor: Colors.black87,
+                    textColor: Colors.white,
                     onPressed:
                     _isLoading ? null : () => _signUpWithEmail(context),
                   ),
 
                   SizedBox(height: 60.0),
-                  Text(
-                    "Copyright © 2021-2022",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(color: Colors.tealAccent),
-                  ),
+                  // Text(
+                  //   "Copyright © 2021-2022",
+                  //   textAlign: TextAlign.center,
+                  //   style: TextStyle(color: Colors.tealAccent),
+                  // ),
                 ],
               ),
             ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quran_khmer_online/app/schedule_page/custom_dialog_box.dart';
 import 'package:quran_khmer_online/app/schedule_page/list_items_builder.dart';
 import 'package:quran_khmer_online/app/schedule_page/schedule_list_tile.dart';
 import 'package:quran_khmer_online/models/schedule.dart';
@@ -15,6 +16,7 @@ class _SchedulePageState extends State<SchedulePage> {
 
   List<bool> _selectDate = [true, true, true, true,true, true,true];
   List<String> _day = ["Mo", "Tu", "We", "Th","Fr", "Sa","Su"];
+  List<String> _day_full = ["Monday", "Tuesday", "Wednesday", "Thursday","Friday", "Saturday","Sunday"];
   var day_num = 1;
   @override
   void initState() {
@@ -73,13 +75,25 @@ class _SchedulePageState extends State<SchedulePage> {
           itemBuilder: (context, schedule) {
             return ScheduleListTile(
               schedule: schedule ,
-              onTap: () {},
+              onTap: () {
+                showDialog(context: context,
+                    builder: (BuildContext context){
+                      return CustomDialogBox(
+                        title: schedule.lecture,
+                        descriptions: "He will online stream on "+_day_full[day_num - 1] +" at time: "+schedule.start_time + " to "+schedule.end_time,
+                        text: "Yes",
+                        img: schedule.img,
+                      );
+                    }
+                );
+              },
             );
           }
         );
       },
     );
   }
+
   void setCurrentDay(index){
     setState(() {
       _selectDate[index] = false;

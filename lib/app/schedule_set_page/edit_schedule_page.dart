@@ -38,6 +38,7 @@ class _EditSchedulePageState extends State<EditSchedulePage> {
   String _end_time;
   String _lecture;
   String _lecture_id;
+  String _img;
 
   @override
   void initState() {
@@ -68,7 +69,7 @@ class _EditSchedulePageState extends State<EditSchedulePage> {
           FirestoreDatabase database = FirestoreDatabase(uid: "1234");
           final id = widget.schedule?.id ?? documentIdFromCurrentDate();
           print(id);
-          final schedule = Schedule(id, _start_time, _end_time,_lecture_id, _lecture);
+          final schedule = Schedule(id, _start_time, _end_time,_lecture_id, _lecture, _img);
           await database.setSchedule(schedule,widget.day_num, id);
           Navigator.of(context).pop();
       } on FirebaseException catch (e) {
@@ -201,6 +202,7 @@ class _EditSchedulePageState extends State<EditSchedulePage> {
          _lecture = account.first.name;
          _lecture_id = id;
          _lectureController.text = account.first.name;
+         _img = account.first.img;
       });
     }
   }

@@ -8,6 +8,7 @@ abstract class AuthBase{
   Future<User> createUserWithEmailAndPassword(String email, String password);
   Future<User> signInWithEmailAndPassword(String email, String password);
   Future<void> signOut();
+  Future<void> deleteAccount();
 }
 
 class Auth extends AuthBase{
@@ -72,5 +73,9 @@ class Auth extends AuthBase{
     final googleSignIn = GoogleSignIn();
     await googleSignIn.signOut();
     await _firebaseAuth.signOut();
+  }
+  @override
+  Future<void> deleteAccount() async{
+    await currentUser?.delete();
   }
 }

@@ -113,6 +113,14 @@ class _AccountPageState extends State<AccountPage> with SingleTickerProviderStat
       print(e.toString());
     }
   }
+  Future<void> _deleteAccount(BuildContext context) async{
+    try{
+      final auth = Provider.of<AuthBase>(context, listen: false);
+      await auth.deleteAccount();
+    }catch(e){
+      print(e.toString());
+    }
+  }
 
   Future<void> _confirmSignOut(BuildContext context) async {
     final didRequestSignOut = await showAlertDialog(
@@ -124,6 +132,18 @@ class _AccountPageState extends State<AccountPage> with SingleTickerProviderStat
     );
     if (didRequestSignOut == true) {
       _signOut(context);
+    }
+  }
+  Future<void> _confirmDeleteAccount(BuildContext context) async {
+    final didRequestSignOut = await showAlertDialog(
+      context,
+      title: 'Delete Account',
+      content: 'Are you sure that you want to delete account?',
+      cancelActionText: 'Cancel',
+      defaultActionText: 'Yes',
+    );
+    if (didRequestSignOut == true) {
+      _deleteAccount(context);
     }
   }
   bool _validateAndSaveForm(){
@@ -167,7 +187,7 @@ class _AccountPageState extends State<AccountPage> with SingleTickerProviderStat
       return SignInPage();
     }
     final email = auth.currentUser.email;
-    var menu ={'Logout'};
+    var menu ={'Delete Account','Logout'};
     if(email == 'admin_qurankhmer_online@gmail.com'){
       menu = {'Lectures', 'Schedule', 'Logout'};
     }
@@ -215,6 +235,9 @@ class _AccountPageState extends State<AccountPage> with SingleTickerProviderStat
   }
   void handleClick(String value) {
     switch (value) {
+      case 'Delete Account':
+        _confirmDeleteAccount(context);
+        break;
       case 'Logout':
         _confirmSignOut(context);
         break;
